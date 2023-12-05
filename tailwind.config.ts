@@ -8,11 +8,43 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontFamily:{
+          "inter": "var(--font-inter)",
+          "manrope": "var(--font-manrope)",
+          "raleway": "var(--font-raleway)",
       },
+      backgroundImage: {
+        'hero-bg': "url('/assets/work2.jpeg')",
+      },
+      animation:{
+        blob: "blob 10s infinite",
+        marquee: 'marquee 10s linear infinite',
+        marquee2: 'marquee 10s linear infinite',
+      },
+      keyframes:{
+        blob:{
+          "0%":{
+            transform: "translate(0px, 0px) scale(1)"
+          },
+          "33%":{
+            transform: "translate(30px, -50px) scale(1.1)"
+          },
+          "66%":{
+            transform: "translate(-20px, 20px) scale(0.9)"
+          },
+          "100%":{
+            transform: "translate(0px, 0px) scale(1)"
+          }
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        marquee2: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+      }
     },
   },
   plugins: [],
