@@ -3,10 +3,19 @@ const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const cors = require("cors"); // Import the cors middleware
 
-const app = express();
-const port = 3001;
 
-app.use(cors()); // Enable CORS for all routes
+const app = express();
+const port = process.env.PORT || 3001;
+
+const corsOptions = {
+  origin: process.env.NODE_ENV === "production" ? "https://your-frontend-app-url.com" : "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // enable set cookie
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
+ // Enable CORS for all routes
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -112,12 +121,12 @@ app.post("/submit-form", (req, res) => {
     attachments: [
       {
         filename: 'logo.jpg',
-        path: '../public/assets/logo.jpg',
+        path: './logo.jpg',
         cid: 'companyLogo',
       },
       {
         filename: "email-image.jpg",
-        path: "../public/assets/email-image.jpg",
+        path: "./email-image.jpg",
         cid: "poster",
       },
     ],
