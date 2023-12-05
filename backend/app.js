@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(cors({ 
-  origin: "https://theweekendcoders.vercel.app/contact",
+  origin: "https://theweekendcoders.vercel.app/",
   methods: ["GET", "POST", "OPTIONS", "PUT"]
 }));
 // Enable CORS for all routes
