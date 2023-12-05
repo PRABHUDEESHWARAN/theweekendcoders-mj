@@ -9,7 +9,7 @@ module.exports = {
       return [
         {
           // matching all API routes
-          source: "/:path*",
+          source: "/submit-form",
           headers: [
             { key: "Access-Control-Allow-Credentials", value: "true" },
             { key: "Access-Control-Allow-Origin", value: "*" },
