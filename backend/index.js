@@ -7,8 +7,9 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(cors({ 
-  origin: ["https://theweekendcoders.vercel.app"],
+  origin: ["*"],
   methods: ["GET", "POST", "OPTIONS", "PUT"],
+  optionsSuccessStatus: 200,
   credentials: true,
 }));
 
@@ -108,11 +109,17 @@ const emailTemplate = `
   </html>
   
   `;
+
+app.options('*', function (req,res) { res.sendStatus(200); });
 // Define route for form submission
 app.post("/submit-form", (req, res) => {
+  // res.setHeader("Access-Control-Allow-Origin", "*");
+  // res.setHeader("Access-Control-Allow-Methods", "POST");
+  // res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  // // Check if it's a preflight request
   if (req.method === "OPTIONS") {
-    res.status(200).end(); // Respond OK for preflight requests
-    return;
+    res.status(200).end('ok'); // Respond OK for preflight requests
   }
 
 
