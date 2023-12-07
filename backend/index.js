@@ -110,6 +110,12 @@ const emailTemplate = `
   `;
 // Define route for form submission
 app.post("/submit-form", (req, res) => {
+  if (req.method === "OPTIONS") {
+    res.status(200).end(); // Respond OK for preflight requests
+    return;
+  }
+
+
   const formData = req.body;
 
   // Send acknowledgment email to the customer
